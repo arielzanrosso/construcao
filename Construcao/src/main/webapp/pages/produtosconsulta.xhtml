@@ -38,7 +38,7 @@ template="/templates/template.xhtml"
 				<h:outputText value="#{produtoPesquisaBean.produto.fornecedor.descricao}" />
 				
 				<p:outputLabel value="Observações:" />
-				<h:inputTextarea rows="5" cols="50" value="#{produtoPesquisaBean.historico.observacoes}"/>
+				<h:inputTextarea rows="5" cols="50" value="#{produtoPesquisaBean.historico.observacoes}" />
 			</h:panelGrid>
 			
 			<h:panelGrid columns="1"  rendered="#{produtoPesquisaBean.exibir}">
