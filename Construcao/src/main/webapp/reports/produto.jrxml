@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.14.0.final using JasperReports Library version 6.14.0-2ab0d8625be255bf609c78e1181801213e51db8f  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="produto" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="0bfcbec8-cf59-4886-a312-48d3aed74b57">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Construcao Data Adapter"/>
+	<parameter name="PRODUTO_DESCRICAO" class="java.lang.String"/>
+	<parameter name="FORNECEDOR_DESCRICAO" class="java.lang.String"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT construcao.produto.descricao AS pdescricao,
+	construcao.produto.preco,
+	construcao.produto.quantidade,
+	construcao.fornecedor.descricao AS pfornecedor
+FROM construcao.produto
+	INNER JOIN construcao.fornecedor ON 
+	 construcao.produto.fornecedor_codigo = construcao.fornecedor.codigo 
+WHERE 
+	 construcao.produto.descricao LIKE $P{PRODUTO_DESCRICAO} 
+	 AND construcao.fornecedor.descricao LIKE $P{FORNECEDOR_DESCRICAO}]]>
+	</queryString>
+	<field name="pdescricao" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="descricao"/>
+		<property name="com.jaspersoft.studio.field.label" value="pdescricao"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="produto"/>
+	</field>
+	<field name="preco" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="preco"/>
+		<property name="com.jaspersoft.studio.field.label" value="preco"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="produto"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="quantidade" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="quantidade"/>
+		<property name="com.jaspersoft.studio.field.label" value="quantidade"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="produto"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="pfornecedor" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="descricao"/>
+		<property name="com.jaspersoft.studio.field.label" value="pfornecedor"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="fornecedor"/>
+	</field>
+	<title>
+		<band height="117" splitType="Stretch">
+			<staticText>
+				<reportElement x="-20" y="87" width="595" height="30" uuid="e817bca4-27c5-45b1-9a42-035a3e26629c"/>
+				<textElement textAlignment="Center">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Relatório de Produtos]]></text>
+			</staticText>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="141" height="30" uuid="84b37263-2e3d-42b4-91ec-bbc5de36c7cd">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="817e584f-6110-43b3-bbbd-2e25adbf956c"/>
+				</reportElement>
+				<text><![CDATA[Descrição]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="141" y="0" width="138" height="30" uuid="21dfa37b-7b69-4150-a4b5-1335da53cda4">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="4a8399f3-5469-40a0-aa73-540eb2d4282d"/>
+				</reportElement>
+				<text><![CDATA[Preço]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="279" y="0" width="138" height="30" uuid="00226590-88a7-468b-b1af-c74c2bdbf3bc">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="e36d976f-29ea-46c2-b94d-a56893d030f1"/>
+				</reportElement>
+				<text><![CDATA[Quantidade]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="417" y="0" width="138" height="30" uuid="fee9ce19-24a0-4a29-a8d7-0c0f02aceace">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="2a98767d-5ed5-4f66-a8f2-d71e265d8c81"/>
+				</reportElement>
+				<text><![CDATA[Fornecedor]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="141" height="30" uuid="6c371e6d-99dc-4596-93a3-d2d2e5a9abac">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="817e584f-6110-43b3-bbbd-2e25adbf956c"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{pdescricao}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="141" y="0" width="138" height="30" uuid="d951b09e-ade2-4c88-a5c9-0df8077aa82e">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="4a8399f3-5469-40a0-aa73-540eb2d4282d"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{preco}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="279" y="0" width="138" height="30" uuid="d0462957-292a-4c4d-b27e-5f1758f9c7d3">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="e36d976f-29ea-46c2-b94d-a56893d030f1"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{quantidade}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="417" y="0" width="138" height="30" uuid="d5b10584-a3a5-4f68-a2d0-d5ddb9a100a3">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="2a98767d-5ed5-4f66-a8f2-d71e265d8c81"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{pfornecedor}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<staticText>
+				<reportElement x="-20" y="24" width="595" height="30" uuid="1c9bb924-8690-490e-bf44-1e48a086feb6"/>
+				<box>
+					<topPen lineWidth="1.25" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Rua Borges de Medeiros 366, centro - Cantagalo PR]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+</jasperReport>
